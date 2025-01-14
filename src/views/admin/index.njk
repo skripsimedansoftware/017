@@ -1,0 +1,89 @@
+{% extends "admin/layout.njk" %}
+
+{% block page_title %}
+  Dashboard
+{% endblock page_title %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Page header -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Dashboard</h1>
+        </div>
+        <div class="col-sm-6">
+          <div class="float-sm-right">
+            lorem
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Page header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6" data-widget-name="latest-registration">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Recent Users</h3>
+            </div>
+            <div class="card-body p-0">
+              <ul class="users-list clearfix"></ul>
+            </div>
+            <div class="card-footer text-center">
+              <a href="{{ adminRoute('/manage/users') }}">View all users</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Main content -->
+</div>
+{% endblock content %}
+
+{% block page_script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.46/moment-timezone-with-data.js"></script>
+<script type="text/javascript">
+jQuery(() => {
+  $.ajax({
+    url: '/api/users',
+    headers: {
+      authorization: `Bearer ${localStorage.getItem('token')}`
+    },
+    data: {
+      size: 8,
+      columns: [
+        {
+          name: 'id'
+        }
+      ],
+      order: [
+        {
+          column: 0,
+          dir: 'desc',
+        }
+      ]
+    },
+    success: ({ data }) => {
+      $('ul.users-list').append(
+        data.map((user) => {
+          const photoProfile = user.photoProfile === null ? '' : user.photoProfile;
+          return `
+            <li class="px-1 py-1">
+              <img src="${photoProfile}" style="height:80px;width:80px;" alt="User Image"><a class="users-list-name" href="#">${user.fullName}</a>
+              <span class="users-list-date">${moment(user.createdAt).fromNow()}</span>
+            </li>`;
+        }),
+      );
+    }
+  });
+})
+</script>
+{% endblock page_script %}

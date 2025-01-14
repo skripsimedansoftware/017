@@ -1,0 +1,118 @@
+{% extends "admin/layout.njk" %}
+
+{% block page_title %}
+  Create New Post | {{ app_name }}
+{% endblock page_title %}
+
+{% block page_style %}
+<link rel="stylesheet" href="/public/assets/adminLTE-3.2.0/plugins/summernote/summernote-bs4.min.css">
+{% endblock page_style %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Page header -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Add New Post</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ adminRoute() }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ adminRoute('/posts') }}">Posts</a></li>
+            <li class="breadcrumb-item active">Add New Post</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Page header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <form class="col-12 col-lg-8">
+          <div class="form-group">
+            <input type="text" class="form-control form-control-border" id="input-title" placeholder="Title">
+          </div>
+          <textarea id="input-content"></textarea>
+        </form>
+        <div class="col-12 col-lg-4">
+          {# Summary #}
+          <div class="accordion" id="accordion-summary">
+            <div class="card my-0">
+              <div class="card-header px-0 py-0" id="heading-summary">
+                <button class="btn btn-link btn-block text-left text-dark" type="button" data-toggle="collapse" data-target="#collapse-summary" aria-expanded="true" aria-controls="collapse-summary">
+                  Summary
+                </button>
+              </div>
+              <div id="collapse-summary" class="collapse" aria-labelledby="heading-summary" data-parent="#accordion-summary">
+                <div class="card-body px-3">
+                  Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                </div>
+              </div>
+            </div>
+          </div>
+          {# Categories #}
+          <div class="accordion" id="accordion-categories">
+            <div class="card my-0">
+              <div class="card-header px-0 py-0" id="heading-categories">
+                <button class="btn btn-link btn-block text-left text-dark" type="button" data-toggle="collapse" data-target="#collapse-categories" aria-expanded="true" aria-controls="collapse-categories">
+                  Categories
+                </button>
+              </div>
+              <div id="collapse-categories" class="collapse" aria-labelledby="heading-categories" data-parent="#accordion-categories">
+                <div class="card-body px-3">
+                  Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                </div>
+              </div>
+            </div>
+          </div>
+          {# Tags #}
+          <div class="accordion" id="accordion-tags">
+            <div class="card my-0">
+              <div class="card-header px-0 py-0" id="heading-tags">
+                <button class="btn btn-link btn-block text-left text-dark" type="button" data-toggle="collapse" data-target="#collapse-tags" aria-expanded="true" aria-controls="collapse-tags">
+                  Tags
+                </button>
+              </div>
+              <div id="collapse-tags" class="collapse" aria-labelledby="heading-tags" data-parent="#accordion-tags">
+                <div class="card-body px-3">
+                  Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                </div>
+              </div>
+            </div>
+          </div>
+          {# Featured image #}
+          <div class="accordion" id="accordion-featured-image">
+            <div class="card my-0">
+              <div class="card-header px-0 py-0" id="heading-featured-image">
+                <button class="btn btn-link btn-block text-left text-dark" type="button" data-toggle="collapse" data-target="#collapse-featured-image" aria-expanded="true" aria-controls="collapse-featured-image">
+                  Featured image
+                </button>
+              </div>
+              <div id="collapse-featured-image" class="collapse" aria-labelledby="heading-featured-image" data-parent="#accordion-featured-image">
+                <div class="card-body px-3">
+                  Some placeholder content for the first accordion panel. This panel is shown by default, thanks to the <code>.show</code> class.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Main content -->
+</div>
+{% endblock content %}
+
+{% block page_script %}
+<script src="/public/assets/adminLTE-3.2.0/plugins/summernote/summernote-bs4.min.js"></script>
+<script type="text/javascript">
+jQuery(() => {
+  $('#input-content').summernote();
+})
+</script>
+{% endblock page_script %}

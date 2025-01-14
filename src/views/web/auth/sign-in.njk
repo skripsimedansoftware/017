@@ -1,0 +1,66 @@
+{% extends "web/layout.njk" %}
+
+{% block page_title %}
+  Sign In - {{ app_name }}
+{% endblock page_title %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Main content -->
+  <div class="content">
+    <div class="container">
+      <div class="row">
+        <!-- Image Placeholder -->
+        <div class="col-lg-6 d-flex align-items-center justify-content-center">
+          <img src="/public/assets/images/kXKAosl3ZCFPwYtfFozS.png" alt="Welcome Image" class="img-fluid">
+        </div>
+        
+        <!-- Login Form -->
+        <div class="col-lg-6 mt-4">
+          <div class="p-4 mt-4">
+            <form action="/auth/signin" method="post">
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Password" autocomplete="off">
+              </div>
+              <div class="form-check mb-3">
+                <input type="checkbox" class="form-check-input" id="remember">
+                <label class="form-check-label" for="remember">Remember Me</label>
+              </div>
+              <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            </form>
+
+            <!-- Divider -->
+            <div class="mt-4 mb-4 text-center">
+              <div class="d-flex align-items-center">
+                <hr class="flex-grow-1">
+                <span class="px-2 text-muted">OR</span>
+                <hr class="flex-grow-1">
+              </div>
+            </div>
+
+            <!-- Social Auth Buttons -->
+            <div class="row">
+              <div class="col-12 col-lg-6 my-1">
+                <button class="btn btn-primary btn-block">
+                  <i class="fab fa-facebook-f mr-2"></i> Sign in with Facebook
+                </button>
+              </div>
+              <div class="col-12 col-lg-6 my-1">
+                <button class="btn btn-danger btn-block">
+                  <i class="fab fa-google mr-2"></i> Sign in with Google
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Main content -->
+</div>
+{% endblock content %}

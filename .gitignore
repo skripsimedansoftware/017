@@ -1,0 +1,8 @@
+node_modules/
+sessions/
+public/*
+!public/assets/
+storage/
+notes/
+.env
+*.bak.*

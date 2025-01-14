@@ -1,0 +1,101 @@
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <a href="{{ adminRoute() }}" class="brand-link text-center">
+    <span class="brand-text font-weight-light">{{ app_name }}</span>
+  </a>
+  <div class="sidebar">
+    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+      <div class="image">
+        <img src="/public/assets/adminLTE-3.2.0/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+      </div>
+      <div class="info">
+        <a href="#" class="d-block">{{ req.user.fullName }}</a>
+      </div>
+    </div>
+    <nav class="mt-2">
+      <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <li class="nav-item">
+          <a href="{{ adminRoute() }}" class="nav-link {{ "active" if isBasePath }}">
+            <i class="nav-icon fas fa-tachometer-alt"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+        
+        <li class="nav-item {{ "menu-open" if uriSegmentMatches('posts') }}">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-newspaper"></i>
+            <p>Posts <i class="right fas fa-angle-left"></i> </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ adminRoute('/posts') }}" class="nav-link {{ "active" if uriSegmentMatches('posts') and uriSegments().length === 1 }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Posts</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ adminRoute('/posts/new') }}" class="nav-link {{ "active" if uriSegmentMatches('posts') and uriSegmentMatches('new', 1) }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add New Post</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ adminRoute('/posts/comments') }}" class="nav-link {{ "active" if uriSegmentMatches('posts') and uriSegmentMatches('comments', 1) }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Comments</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ adminRoute('/posts/categories') }}" class="nav-link {{ "active" if uriSegmentMatches('posts') and uriSegmentMatches('categories', 1) }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Categories</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ adminRoute('/posts/tags') }}" class="nav-link {{ "active" if uriSegmentMatches('posts') and uriSegmentMatches('tags', 1) }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tags</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item {{ "menu-open" if uriSegmentMatches('pages') }}">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-copy"></i>
+            <p>Pages <i class="right fas fa-angle-left"></i> </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="{{ adminRoute('/pages') }}" class="nav-link {{ "active" if uriSegmentMatches('pages') and uriSegments().length === 1 }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>All Pages</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="{{ adminRoute('/pages/new') }}" class="nav-link {{ "active" if uriSegmentMatches('pages') and uriSegmentMatches('new', 1) }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Add New Page</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{ adminRoute('/users') }}" class="nav-link {{ "active" if uriSegmentMatches('users') }}">
+            <i class="nav-icon fas fa-users"></i>
+            <p>Users</p>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="{{ webRoute() }}" class="nav-link" target="_blank">
+            <i class="nav-icon fas fa-external-link-alt"></i>
+            <p>
+              Visit Front Page
+            </p>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</aside>

@@ -1,0 +1,132 @@
+{% extends "admin/layout.njk" %}
+
+{% block page_title %}
+  Dashboard
+{% endblock page_title %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Page header -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Add New User</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ adminRoute('/') }}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ adminRoute('/manage/users') }}">Manage Users</a></li>
+            <li class="breadcrumb-item active">Add New</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Page header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <form class="card card-primary card-outline" id="add-new-user">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-lg-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="input-full-name">Full name</label>
+                    <input type="text" class="form-control form-control-border" id="input-full-name" placeholder="Enter ...">
+                  </div>
+                  <div class="form-group clearfix">
+                    <label>Gender</label>
+                    <div class="row">
+                      <div class="col-12 mt-2">
+                        <div class="icheck-primary d-inline mx-2">
+                          <input type="radio" id="gender-male" name="user-form-gender" value="male">
+                          <label for="gender-male">Male</label>
+                        </div>
+                        <div class="icheck-primary d-inline mx-2">
+                          <input type="radio" id="gender-female" name="user-form-gender" value="female">
+                          <label for="gender-female">Female</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                  <div class="form-group">
+                    <label class="col-form-label" for="input-email">Email</label>
+                    <input type="text" class="form-control form-control-border" id="input-email" placeholder="Email">
+                  </div>
+                  <div class="form-group">
+                    <label class="col-form-label" for="input-username">Username</label>
+                    <input type="text" class="form-control form-control-border" id="input-username" placeholder="Username">
+                  </div>
+                  <div class="form-group password-form-group">
+                    <label>Password</label>
+                    <input type="password" class="form-control form-control-border" id="input-password" placeholder="Password" autocomplete="off"/>
+                    <div class="row mt-2 justify-content-between px-2">
+                      <a class="btn btn-xs btn-primary" password-option="generate">Generate random password</a>
+                      <a class="btn btn-xs btn-primary" password-option="show-hide">Show password</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="submit" class="btn btn-success">Add New User</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Main content -->
+</div>
+{% endblock content %}
+
+{% block page_script %}
+<script type="text/javascript">
+jQuery(() => {
+  /**
+   * Generate random password
+   *
+   * @param {number} length
+   * @returns {string}
+   */
+  const randomPassword = (length) => {
+    const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    let password = '';
+
+    for (let i = 0; i < length; i++) {
+      const randomIndex = Math.floor(Math.random() * charset.length);
+      password += charset[randomIndex];
+    }
+
+    return password;
+  };
+
+  $('form#add-new-user').on('submit', function(e) {
+    e.preventDefault();
+  });
+
+  $('a[password-option]').on('click', function click(e) {
+    e.preventDefault();
+    const passwordInput = $('#input-password');
+    const passwordOption = $(this).attr('password-option');
+
+    if (passwordOption === 'generate') {
+      passwordInput.val(randomPassword(10));
+    }
+
+    if (passwordOption === 'show-hide') {
+      const setType =
+        passwordInput.attr('type') === 'password' ? 'text' : 'password';
+      passwordInput.attr('type', setType);
+    }
+  });
+
+})
+</script>
+{% endblock page_script %}

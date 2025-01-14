@@ -1,0 +1,11 @@
+{
+  "exec": "node --experimental-modules main.js",
+  "ignore": [
+    "./database",
+    "./storage",
+    "./sessions",
+    "./client",
+    "./public",
+    "./notes"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "development": {
+    "username": "root",
+    "password": null,
+    "database": "exzly_development",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false,
+    "define": {
+      "charset": "utf8mb4",
+      "collate": "utf8mb4_unicode_ci",
+      "freezeTableName": true,
+      "underscored": true
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "exzly_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false,
+    "define": {
+      "charset": "utf8mb4",
+      "collate": "utf8mb4_unicode_ci",
+      "freezeTableName": true,
+      "underscored": true
+    }
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "exzly_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "logging": false,
+    "define": {
+      "charset": "utf8mb4",
+      "collate": "utf8mb4_unicode_ci",
+      "freezeTableName": true,
+      "underscored": true
+    }
+  }
+}

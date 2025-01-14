@@ -1,0 +1,80 @@
+{% extends "admin/layout.njk" %}
+
+{% block page_title %}
+  Tags
+{% endblock page_title %}
+
+{% block page_style %}
+<link rel="stylesheet" href="/public/assets/DataTables/datatables.min.css">
+{% endblock page_style %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Page header -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Tags</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active">Starter Page</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Page header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <form class="col-12 col-lg-4" id="add-new-tag">
+          <div class="form-group">
+            <label class="col-form-label" for="input-tag-name">Name</label>
+            <input type="text" class="form-control" id="input-tag-name" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="input-tag-slug">Slug</label>
+            <input type="text" class="form-control" id="input-tag-slug" placeholder="Slug">
+          </div>
+          <div class="form-group">
+            <label class="col-form-label" for="input-tag-description">Description</label>
+            <textarea id="input-tag-description" class="form-control" style="resize: none; overflow: hidden"></textarea>
+          </div>
+          <button type="submit" class="btn btn-sm btn-primary">Add New Tag</button>
+        </form>
+        <div class="col-12 col-lg-8 card py-1 px-1">
+          <table id="post-tags-table" class="table table-bordered table-hover table-striped" style="width:100%">
+            <thead>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Slug</th>
+              <th>Count</th>
+              <th>Option</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Main content -->
+</div>
+{% endblock content %}
+
+{% block page_script %}
+<script src="/public/assets/DataTables/datatables.min.js"></script>
+<script type="text/javascript">
+jQuery(() => {
+  $('#post-tags-table').DataTable();
+  $('form#add-new-tag').on('submit', function(e) {
+    e.preventDefault();
+    // 
+  })
+})
+</script>
+{% endblock page_script %}

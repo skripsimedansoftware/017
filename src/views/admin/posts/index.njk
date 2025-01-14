@@ -1,0 +1,67 @@
+{% extends "admin/layout.njk" %}
+
+{% block page_title %}
+  Dashboard
+{% endblock page_title %}
+
+{% block content %}
+<div class="content-wrapper">
+  <!-- Page header -->
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1 class="m-0">Starter Page</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="{{ adminRoute() }}">Home</a></li>
+            <li class="breadcrumb-item active">Posts</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Page header -->
+
+  <!-- Main content -->
+  <div class="content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="card-header px-1">
+            <a href="{{ adminRoute('/manage/users/add') }}" class="btn btn-sm btn-primary"><i class="fas fa-user-plus"></i> Add new</a>
+            <div class="card-tools">
+              {% if getQueryParams('in-trash') === 'true' %}
+              <a href="{{ adminRoute('/manage/users') }}" class="btn btn-sm btn-warning">
+                <i class="fas fa-arrow-left"></i> Go back
+              </a>
+              {% else %}
+              <a href="{{ adminRoute('/manage/users?in-trash=true') }}" class="btn btn-sm btn-warning">
+                <span class="badge bg-navy right" id="deleted-user-count">0</span> Deleted
+              </a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        <div class="col-12 card py-3 px-3">
+          <table id="users-table" class="table table-bordered table-hover table-striped" style="width:100%">
+            <thead>
+              <th class="text-center">Seq</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Categories</th>
+              <th>Tags</th>
+              <th>Comments</th>
+              <th>Date</th>
+              <th>Option</th>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ./Main content -->
+</div>
+{% endblock content %}
