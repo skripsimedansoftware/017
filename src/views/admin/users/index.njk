@@ -70,8 +70,8 @@
 {% endblock content %}
 
 {% block page_script %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.46/moment-timezone-with-data.js"></script>
+<script src="/public/assets/moment/moment.min.js"></script>
+<script src="/public/assets/moment/moment-timezone-with-data.min.js"></script>
 <script src="/public/assets/DataTables/datatables.min.js"></script>
 <script src="/public/assets/Fancyapps/fancybox/fancybox.umd.js"></script>
 <script type="text/javascript">
@@ -89,7 +89,7 @@ jQuery(() => {
     processing: true,
     serverSide: true,
     fixedHeader: true,
-    pagingType: 'first_last_numbers',
+    pagingType: 'full_numbers',
     dom: '<"top"<"row"<"col-12 col-md-4 mb-2"l><"col-12 col-md-4 mb-2" B><"col-12 col-md-4 mb-2"f>>>t<"bottom"<"row"<"col-6 mt-3"i><"col-6 mt-3"p>>><"clear">',
     ajax: {
       url: '/api/users',
@@ -114,16 +114,19 @@ jQuery(() => {
       {
         name: 'id',
         data: (data, type, row, meta) => meta.row + 1,
-        width: '1%',
+        width: '2%',
         className: 'text-center'
       },
       {
         name: 'username',
         data: 'username',
+        width: '24%',
       },
       {
         name: 'gender',
         data: 'gender',
+        width: '4%',
+        className: 'text-center',
         render: (data) => data === null ? '-' : data
       },
       {
@@ -136,10 +139,12 @@ jQuery(() => {
       {
         name: 'createdAt',
         data: 'createdAt',
+        width: '14%',
         render: (data) => moment.tz(data, getTimezone()).tz(moment.tz.guess()).fromNow()
       },
       {
         data: 'id',
+        className: 'text-center',
         render: (data, type, row, meta) => {
           if (getQueryParams('in-trash') === 'true') {
             return `
@@ -177,7 +182,7 @@ jQuery(() => {
       json.recordsTotal = xhr.getResponseHeader('X-Total-Count');
       json.recordsFiltered = xhr.getResponseHeader('X-Filtered-Count');
     }
-  })
+  });
 
   /**
    * Handle overview data

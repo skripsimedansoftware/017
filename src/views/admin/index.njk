@@ -1,7 +1,7 @@
 {% extends "admin/layout.njk" %}
 
 {% block page_title %}
-  Dashboard
+  Dashboard | {{ app_name }}
 {% endblock page_title %}
 
 {% block content %}
@@ -36,7 +36,7 @@
               <ul class="users-list clearfix"></ul>
             </div>
             <div class="card-footer text-center">
-              <a href="{{ adminRoute('/manage/users') }}">View all users</a>
+              <a href="{{ adminRoute('/users') }}">View all users</a>
             </div>
           </div>
         </div>

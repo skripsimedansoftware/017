@@ -30,14 +30,14 @@
       <div class="row">
         <div class="col-12">
           <div class="card-header px-1">
-            <a href="{{ adminRoute('/manage/users/add') }}" class="btn btn-sm btn-primary"><i class="fas fa-user-plus"></i> Add new</a>
+            <a href="{{ adminRoute('/posts/add') }}" class="btn btn-sm btn-primary"><i class="fas fa-user-plus"></i> Add new</a>
             <div class="card-tools">
               {% if getQueryParams('in-trash') === 'true' %}
-              <a href="{{ adminRoute('/manage/users') }}" class="btn btn-sm btn-warning">
+              <a href="{{ adminRoute('/posts') }}" class="btn btn-sm btn-warning">
                 <i class="fas fa-arrow-left"></i> Go back
               </a>
               {% else %}
-              <a href="{{ adminRoute('/manage/users?in-trash=true') }}" class="btn btn-sm btn-warning">
+              <a href="{{ adminRoute('/posts?in-trash=true') }}" class="btn btn-sm btn-warning">
                 <span class="badge bg-navy right" id="deleted-user-count">0</span> Deleted
               </a>
               {% endif %}
