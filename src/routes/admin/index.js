@@ -18,7 +18,7 @@ app.use(
   sessionMiddleware,
   authMiddleware.getAuthorization,
   (req, res, next) => {
-    const whitelist = /(sign-(in|out)|(forgot|reset)-password)/;
+    const whitelist = /(sign-(in)|(forgot|reset)-password)/;
     const regexPath = whitelist.test(req.path);
 
     if (req.user && regexPath) {
